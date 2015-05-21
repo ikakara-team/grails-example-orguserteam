@@ -1,0 +1,1 @@
+<span id="copyrightNotice">&copy; Copyright Example OUT 2015. All rights reserved.</span>

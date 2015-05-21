@@ -1,0 +1,180 @@
+
+.hideOverflow {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+
+/* membership display */
+.folder {
+  padding-top: 84px;
+}
+
+.wide {
+  width:100%;
+  height: 0px;
+  /*background-image:url('/assets/example/bg_8.jpg');
+  background-size:cover;*/
+}
+
+.wide img {
+  width:100%;
+}
+
+.wide .logo {
+  color:#525252;
+  font-weight:800;
+  font-size:14pt;
+  padding:5px;
+  text-align:center;
+  white-space: nowrap;
+}
+
+.wide .line {
+  padding-top:0px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* dashboard_header dropdown wrap*/
+
+.fill-width.dropdown {
+  position: static;
+}
+.fill-width.dropdown > .dropdown-menu {
+  left: auto;
+  position: absolute;
+}
+.fill-width.dropdown > .dropdown-menu > li > a {
+  white-space: normal;
+}
+
+/* ------------------------------------------------------ */
+
+div.btn-group {
+  /* width: 100%; */
+  display: block;
+  text-align: center;
+  margin-top: 0em;
+  a.btn {
+    width: inherit;
+    display: block;
+    border: 1 none;
+    border-radius:0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    i {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  div.btn-group  > a.btn > i {
+    display: inline;
+  }
+}
+
+/* modal dialogs */
+.modal {
+  display:none;
+  position: fixed;
+  overflow: auto;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5000;
+  background:rgba(0,0,0,0.8);
+
+  .devoops-modal {
+    position:absolute;top:90px;
+    border: 1px solid #f8f8f8;
+    box-shadow: 0 0 10px #505559;
+    background: transparent;
+    margin-bottom: 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    width: 100%;
+    z-index:6000;
+  }
+
+  .devoops-modal-inner {
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+    background: #FCFCFC;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal {
+    .devoops-modal {
+      position:absolute;top:90px;margin-left: -300px;left: 50%;
+      width: 600px;
+    }
+  }
+}
+
+/* MESSAGES AND ERRORS */
+
+.errors,
+.message {
+  font-size: 0.8em;
+  line-height: 2;
+  margin: 1em 2em;
+  padding: 0.25em;
+}
+
+.message {
+  background: #f3f3ff;
+  border: 1px solid #b2d1ff;
+  color: #006dba;
+  -moz-box-shadow: 0 0 0.25em #b2d1ff;
+  -webkit-box-shadow: 0 0 0.25em #b2d1ff;
+  box-shadow: 0 0 0.25em #b2d1ff;
+}
+
+.errors {
+  background: #fff3f3;
+  border: 1px solid #ffaaaa;
+  color: #cc0000;
+  -moz-box-shadow: 0 0 0.25em #ff8888;
+  -webkit-box-shadow: 0 0 0.25em #ff8888;
+  box-shadow: 0 0 0.25em #ff8888;
+}
+
+.errors ul,
+.message {
+  padding: 0;
+}
+
+.errors li {
+  list-style: none;
+  background: transparent url(../images/skin/exclamation.png) 0.5em 50% no-repeat;
+  text-indent: 2.2em;
+}
+
+.message {
+  background: transparent url(../images/skin/information.png) 0.5em 50% no-repeat;
+  text-indent: 2.2em;
+}
+
+/* form fields with errors */
+
+.error input, .error select, .error textarea {
+  background: #fff3f3;
+  border-color: #ffaaaa;
+  color: #cc0000;
+}
+
+.error input:focus, .error select:focus, .error textarea:focus {
+  -moz-box-shadow: 0 0 0.5em #ffaaaa;
+  -webkit-box-shadow: 0 0 0.5em #ffaaaa;
+  box-shadow: 0 0 0.5em #ffaaaa;
+}

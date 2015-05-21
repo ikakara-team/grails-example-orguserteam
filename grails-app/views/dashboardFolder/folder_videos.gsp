@@ -4,6 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="layout" content="dashboard"/>
     <title>Videos</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.css">
+
   <asset:stylesheet src="fileinput.css"/>
 </head>
 <body>
@@ -44,17 +49,32 @@
         </div>
         <!--End Dashboard 1-->
         <!--Start Dashboard 2-->
-        <g:if test="${listVideo}">
-          <div class="row">
-            <g:each status="i" in="${listVideo}" var="objvideo">
-              <div align="center" class="col-xs-4 embed-responsive embed-responsive-16by9" style='padding: 10%;'>
-                <video class="embed-responsive-item">
-                  <source src='//${objvideo}' type=video/mp4>
-                </video>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <div class="box-name">
+                  <i class="fa fa-picture-o"></i>
+                  <span>Video Gallery</span>
+                </div>
+                <div class="no-move"></div>
               </div>
-            </g:each>
+              <div id="simple_gallery" class="box-content">
+                <g:if test="${listVideo}">
+                  <g:each status="i" in="${listVideo}" var="objvideo">
+                    <a class="fancybox fancybox.iframe" rel="gallery1" href="//${objvideo}">
+                      <video>
+                        <source src='//${objvideo}' type=video/mp4>
+                      </video>
+                    </a>
+                  </g:each>
+                </g:if>
+              </div>
+            </div>
           </div>
-        </g:if>
+        </div>
+
+
         <!--End Dashboard 2 -->
         <div style="height: 40px;"></div>
       </div>
@@ -63,8 +83,21 @@
   </div>
 <!-- script references -->
 <content tag="javascript">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.js"></script>
+
   <asset:javascript src="fileinput/fileinput.js"/>
   <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+    $('.fancybox').fancybox({
+    openEffect	: 'none',
+    closeEffect	: 'none'
+    });
+    });
+
     // http://plugins.krajee.com/file-input#ajax-uploads
     $("#input-id").fileinput({
     'allowedFileTypes':['video'],

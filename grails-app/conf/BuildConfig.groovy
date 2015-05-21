@@ -80,7 +80,7 @@ grails.project.dependency.resolution = {
     compile ':spring-security-core:2.0-RC4'
     compile ':spring-security-userstore:0.8.3'
 
-    compile ':aws-instance:0.6.2'
+    compile ':aws-instance:0.6.4'
     compile ':aws-orguserteam:0.9.7'
 
     compile ":scaffolding:2.1.2"

@@ -22,6 +22,8 @@ class UrlMappings {
     "/$id/videos"(controller: "dashboardFolder", parseRequest: true) {
       action = [GET: "folder_videos", POST: "upload_video"]
     }
+    "/$id/videos/$fileName"(controller: "dashboardFolder", action:"do_video")
+    "/$id/videos-delete/$fileName"(controller: "dashboardFolder", action:"delete_video")
     "/welcome"(controller: "dashboardUser", action: "memberships")
     "/my-memberships"(controller: "dashboardUser", action: "memberships")
     "/my-profile/"(controller: "dashboardUser", parseRequest: true) {

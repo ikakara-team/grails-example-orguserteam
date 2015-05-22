@@ -4,11 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="layout" content="dashboard"/>
     <title>Videos</title>
-
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.css">
-
   <asset:stylesheet src="fileinput.css"/>
 </head>
 <body>
@@ -41,7 +39,6 @@
         <div id="dashboard-header" class="row">
           <div class="col-xs-12">
             <h3>Upload Video:</h3>
-
             <form id="fileupload" href='${request.contextPath}/${folder.aliasId}/videos' method="POST" enctype="multipart/form-data">
               <input id="input-id" name='file_data' type="file" class="file">
             </form>
@@ -62,9 +59,9 @@
               <div id="simple_gallery" class="box-content">
                 <g:if test="${listVideo}">
                   <g:each status="i" in="${listVideo}" var="objvideo">
-                    <a class="fancybox fancybox.iframe" rel="gallery1" href="//${objvideo}">
+                    <a class="fancybox fancybox.iframe" rel="gallery1" href="//${objvideo}" title="${objvideo}">
                       <video>
-                        <source src='//${objvideo}' type=video/mp4>
+                        <source src='//${objvideo}' type='video/mp4'>
                       </video>
                     </a>
                   </g:each>
@@ -73,8 +70,6 @@
             </div>
           </div>
         </div>
-
-
         <!--End Dashboard 2 -->
         <div style="height: 40px;"></div>
       </div>
@@ -88,16 +83,12 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.js"></script>
-
+  <asset:javascript src="init_fancybox.js"/>
   <asset:javascript src="fileinput/fileinput.js"/>
   <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-    $('.fancybox').fancybox({
-    openEffect	: 'none',
-    closeEffect	: 'none'
+    $(document).ready(function () {
+    InitFancybox("${request.contextPath}/${folder.aliasId}");
     });
-    });
-
     // http://plugins.krajee.com/file-input#ajax-uploads
     $("#input-id").fileinput({
     'allowedFileTypes':['video'],

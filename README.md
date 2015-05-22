@@ -10,7 +10,7 @@ the following plugins:
 |compile ':cookie-session:2.0.17'|http://grails.org/plugin/cookie-session|https://github.com/benlucchesi/grails-cookie-session-v2|
 |compile ':spring-security-core:2.0-RC4'|http://grails.org/plugin/spring-security-core|https://github.com/grails-plugins/grails-spring-security-core|
 |compile ':spring-security-userstore:0.8.3'|http://grails.org/plugin/spring-security-userstore|https://github.com/ikakara-team/grails-spring-security-userstore|
-|compile ':aws-instance:0.6.4'|http://grails.org/plugin/aws-instance|https://github.com/ikakara-team/grails-aws-instance|
+|compile ':aws-instance:0.6.5'|http://grails.org/plugin/aws-instance|https://github.com/ikakara-team/grails-aws-instance|
 |compile ':aws-orguserteam:0.9.7'|http://grails.org/plugin/aws-orguserteam|https://github.com/ikakara-team/grails-aws-orguserteam|
 
 Dependent SOA Services:
@@ -48,9 +48,31 @@ AWS ElasticBeanStalk environment properties:
 * PARAM1
   * venues=,mailFrom=,host_name=
 
+AWS Configuration:
+--------------
+Create S3 bucket and configure bucket policy:
+```
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::[BUCKET_NAME]/*"
+    }
+  ]
+}
+```
+
 Special Thanks:
 --------------
 * <a href="http://devoops.me/handmade/3/">Devoops</a> for use of their bootstrap template
+* <a href="http://plugins.krajee.com/file-input">File Input</a> for video upload
+* <a href="http://www.fancyapps.com/fancybox/">fancyBox</a> for video gallery
 
 Copyright & License:
 --------------

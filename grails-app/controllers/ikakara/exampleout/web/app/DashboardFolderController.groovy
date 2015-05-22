@@ -65,10 +65,10 @@ class DashboardFolderController extends ABaseFolderController {
     def org = request.getAttribute(ORG_KEY)
     def folder = request.getAttribute(FOLDER_KEY)
 
-    videoCommand.videoFile = request.getFile('file_data');
-    if(!videoCommand.videoFile) {
+    videoCommand.uploadFile = request.getFile('file_data');
+    if(!videoCommand.uploadFile) {
       flash.message = "Video upload failed. Invalid file. Please try again."
-    } else if (!videoCommand.validate(["videoFile"]) || videoCommand.hasErrors()) { // validate videoFile
+    } else if (!videoCommand.validate(["uploadFile"]) || videoCommand.hasErrors()) { // validate uploadFile
       flash.message = videoCommand.errors
     } else {
       // rename file - tempfiles are placed in
@@ -76,12 +76,33 @@ class DashboardFolderController extends ABaseFolderController {
       // linux: /usr/share/tomcat7/temp
       videoCommand.tempFilename = FileUtil.generateRandomFileName("VID")
       videoCommand.tempFile = File.createTempFile(videoCommand.tempFilename, ".${videoCommand.videoExtension}")
-      videoCommand.videoFile.transferTo(videoCommand.tempFile)
+      videoCommand.uploadFile.transferTo(videoCommand.tempFile)
 
       storageService.save(folder, videoCommand)
 
       videoCommand.cleanup()
     }
+
+    redirect(uri: "/${folder.aliasId}/videos")
+  }
+
+  def delete_video(VideoCommand videoCommand) {
+    def user = request.getAttribute(USER_KEY)
+    def org = request.getAttribute(ORG_KEY)
+    def folder = request.getAttribute(FOLDER_KEY)
+
+    videoCommand.withVideoFilename(params.fileName)
+    storageService.delete(folder, videoCommand)
+
+    redirect(uri: "/${folder.aliasId}/videos")
+  }
+
+  def do_video(VideoCommand videoCommand) {
+    def user = request.getAttribute(USER_KEY)
+    def org = request.getAttribute(ORG_KEY)
+    def folder = request.getAttribute(FOLDER_KEY)
+
+    println "---------------ADD YOUR DO VIDEO CODE HERE---------------" + params
 
     redirect(uri: "/${folder.aliasId}/videos")
   }

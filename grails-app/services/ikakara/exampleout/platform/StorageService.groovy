@@ -30,10 +30,10 @@ public class StorageService implements ApplicationContextAware {
   }
 
   def save(IdFolder folder, VideoCommand videoCommand) {
-    if(videoCommand.videoFile) {
-      def fullKey = folder.id + VIDEOS_PATH + videoCommand.videoNameExt;
+    if(videoCommand.uploadFile) {
+      def fullKey = folder.id + VIDEOS_PATH + videoCommand.videoNameExt
 
-      if (awsStorageService.putPublicBytes(FOLDERS_BASE, fullKey, FileUtil.readAllBytes(videoCommand.tempFile), videoCommand.videoFile.getContentType(), [date:(new Date()).toString()])) {
+      if (awsStorageService.putPublicBytes(FOLDERS_BASE, fullKey, FileUtil.readAllBytes(videoCommand.tempFile), videoCommand.uploadFile.getContentType(), [date:(new Date()).toString()])) {
         def uploadedFullFileUrl = awsStorageService.getPublicObjectURL(FOLDERS_BASE, fullKey)
         log.info("Uploaded video: ${uploadedFullFileUrl}")
       } else {
@@ -41,7 +41,7 @@ public class StorageService implements ApplicationContextAware {
       }
     }
     if(videoCommand.thumbFile) {
-      def fullKey = folder.id + THUMBNAILS_PATH + videoCommand.thumbNameExt;
+      def fullKey = folder.id + THUMBNAILS_PATH + videoCommand.thumbNameExt
 
       if (awsStorageService.putPublicBytes(FOLDERS_BASE, fullKey, FileUtil.readAllBytes(videoCommand.thumbFile), videoCommand.THUMBNAILS_TYPE, [date:(new Date()).toString()])) {
         def uploadedFullFileUrl = awsStorageService.getPublicObjectURL(FOLDERS_BASE, fullKey)
@@ -52,17 +52,15 @@ public class StorageService implements ApplicationContextAware {
     }
   }
 
-  def delete(VideoCommand videoCommand) {
+  def delete(IdFolder folder, VideoCommand videoCommand) {
     if(videoCommand.videoNameExt) {
       // delete video
-      awsStorageService.deletePublicURL(videoCommand.videoNameExt)
-    }
-
-    if(videoCommand.thumbNameExt) {
+      def fullKey = folder.id + VIDEOS_PATH + videoCommand.videoNameExt
+      awsStorageService.deletePublicObject(FOLDERS_BASE, fullKey)
       // delete thumbnail
-      awsStorageService.deletePublicURL(videoCommand.thumbNameExt)
+      fullKey = folder.id + THUMBNAILS_PATH + videoCommand.thumbNameExt
+      awsStorageService.deletePublicObject(FOLDERS_BASE, fullKey)
     }
-
   }
 
 }

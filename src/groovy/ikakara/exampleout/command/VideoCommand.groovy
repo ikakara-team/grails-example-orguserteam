@@ -27,7 +27,7 @@ class VideoCommand {
   static public final String THUMBNAILS_EXT = 'png'
   static public final String THUMBNAILS_TYPE = 'image/png'
 
-  CommonsMultipartFile videoFile
+  CommonsMultipartFile uploadFile
   String videoExtension
   String tempFilename
   File tempFile
@@ -41,22 +41,27 @@ class VideoCommand {
     return "${tempFilename}.${THUMBNAILS_EXT}"
   }
 
+  VideoCommand withVideoFilename(String filename) {
+    (tempFilename, videoExtension) = FileUtil.splitFileNameExtension(filename)
+    return this
+  }
+
   static constraints = {
-    videoFile validator: { file, obj ->
-      println "IN VALIDATOR videoFile ${file} ${obj}"
+    uploadFile validator: { file, obj ->
+      println "IN VALIDATOR uploadFile ${file} ${obj}"
       if(file) {
         if(file.isEmpty() || file.getSize() == 0) {
-          //errors.rejectValue 'videoFile', 'video.videoFile.invalidfile', [file.getOriginalFilename()] as Object[], "Video upload failed. Invalid file ${file.getOriginalFilename()}. Please try again."
+          //errors.rejectValue 'uploadFile', 'video.uploadFile.invalidfile', [file.getOriginalFilename()] as Object[], "Video upload failed. Invalid file ${file.getOriginalFilename()}. Please try again."
           return ['invalidfile', file.getOriginalFilename()]
         } else if (file.getSize() > FileUtil.VIDEO_SIZE_LIMIT) {
-          //errors.rejectValue 'videoFile', 'video.videoFile.filetoolarge', [file.getSize()] as Object[], "Video upload failed. Video too large (${file.getSize()}). Please try again."
+          //errors.rejectValue 'uploadFile', 'video.uploadFile.filetoolarge', [file.getSize()] as Object[], "Video upload failed. Video too large (${file.getSize()}). Please try again."
           return ['invalidfile', file.getSize()]
         } else {
           def (isValid, extension) = FileUtil.getValidExtension(file.getOriginalFilename(), FileUtil.ACCEPTABLE_VIDEOFILE_TYPES)
           obj.videoExtension = extension // save extension to obj
-          println "IN VALIDATOR videoFile ${file} ${obj} ${extension}"
+          println "IN VALIDATOR uploadFile ${file} ${obj} ${extension}"
           if(!isValid) {
-            //errors.rejectValue 'videoFile', 'video.videoFile.invalidtype', [extension] as Object[], "Video upload failed. Invalid file type (${extension}). Please try again."
+            //errors.rejectValue 'uploadFile', 'video.uploadFile.invalidtype', [extension] as Object[], "Video upload failed. Invalid file type (${extension}). Please try again."
             return ['invalidtype', extension]
           }
         }
@@ -74,8 +79,8 @@ class VideoCommand {
   }
 
   public void cleanup() {
-    if(videoFile) {
-      videoFile = null
+    if(uploadFile) {
+      uploadFile = null
     }
     if(tempFile) {
       tempFile.delete()

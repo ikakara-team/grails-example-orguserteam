@@ -65,7 +65,7 @@ grails.project.dependency.resolution = {
 
   dependencies {
     // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-    compile 'com.amazonaws:aws-java-sdk:1.9.36' // http://aws.amazon.com/releasenotes/Java?browse=1
+    compile 'com.amazonaws:aws-java-sdk:1.9.37' // http://aws.amazon.com/releasenotes/Java?browse=1
 
     // needed for spring security
     compile "net.sf.ehcache:ehcache-core:2.6.11" //http://maven-repository.com/artifact/net.sf.ehcache/ehcache-core

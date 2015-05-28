@@ -6,15 +6,15 @@ class UrlMappings {
     // site
     "/"(controller: "site", action: "index")
     // app urls
-    "/$id"(controller: "site", action:"forward")
-    "/$id/profile"(controller: "site", parseRequest: true) {
-      action = [GET: "forward", PUT: "forward", DELETE: "forward"]
+    "/$id"(controller: "forward", action:"profile")
+    "/$id/profile"(controller: "forward", parseRequest: true) {
+      action = [GET: "profile", PUT: "profile", DELETE: "profile"]
     }
-    "/$id/members"(controller: "site", parseRequest: true) {
-      action = [GET: "forwardMember", POST: "forwardMember", DELETE: "forwardMember"]
+    "/$id/members"(controller: "forward", parseRequest: true) {
+      action = [GET: "member", POST: "member", DELETE: "member"]
     }
-    "/$id/invited"(controller: "site", parseRequest: true) {
-      action = [POST: "forwardInvited", DELETE: "forwardInvited"]
+    "/$id/invited"(controller: "forward", parseRequest: true) {
+      action = [POST: "invited", DELETE: "invited"]
     }
     "/$id/folders"(controller: "dashboardOrg", parseRequest: true) {
       action = [GET: "orgFolders"]
@@ -23,7 +23,11 @@ class UrlMappings {
       action = [GET: "folder_videos", POST: "upload_video"]
     }
     "/$id/videos/$fileName"(controller: "dashboardFolder", action:"do_video")
+    "/$id/videos-process/$fileName"(controller: "dashboardFolder", parseRequest: true) {
+      action = [POST: "process_video"]
+    }
     "/$id/videos-delete/$fileName"(controller: "dashboardFolder", action:"delete_video")
+    // user
     "/welcome"(controller: "dashboardUser", action: "memberships")
     "/my-memberships"(controller: "dashboardUser", action: "memberships")
     "/my-profile/"(controller: "dashboardUser", parseRequest: true) {

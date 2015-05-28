@@ -1,0 +1,85 @@
+/* Tables */
+
+.no-scroll-bars {
+  overflow:hidden;
+}
+
+caption { text-align: center; font-weight: bold; background-color: #ccc; color: black; }
+caption.text-left {
+  padding-left: 1em;
+}
+
+td.canvas {
+  padding:0px !important;
+  margin:0px !important;
+  overflow: visible;
+}
+
+th { text-align: right; background-color: #ffffe0; color: black; word-break: break-all; }
+td { word-break: break-all; }
+
+#events th { }
+#events td { }
+#properties th { width: 1ex; }
+#properties td { width: 6ex; }
+
+.true { background-color: #360; color: #ffffe0; }
+.false { background-color: #603; color: #ffffe0; }
+.highlight { background-color: #ffffaa; color: #ffffe0; }
+
+/* Video Controls */
+
+.vertical-align {
+  display: flex;
+  position: relative;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+
+}
+
+.videoControls {
+  width: 100%;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.videoControls a {
+  letter-spacing: 4px;
+  vertical-align: text-bottom;
+}
+
+.videoTime {
+  font-size: 1.2em;
+}
+
+ol {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+li > a {
+  cursor: pointer;
+}
+
+.videoControls span, .videoControls div {
+  display: inline-block;
+  color: #999;
+}
+
+span.badge {
+  padding: 3px 6px;
+  vertical-align: top;
+  border-radius: 2px;
+  background: none;
+  color: #436E90;
+  border: 1px solid #436E90;
+}
+
+.fa:hover {
+  color: #555;
+}

@@ -1,6 +1,9 @@
 package ikakara.exampleout.web.app
 
+import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
+import grails.converters.XML
+
 import grails.plugin.springsecurity.annotation.Secured
 
 import ikakara.awsinstance.command.EmailCommand
@@ -25,6 +28,7 @@ class DashboardFolderController extends ABaseFolderController {
     deleteFolder: 'DELETE', // folder
     folder_profile: 'GET', updateFolderProfile: 'PUT', // folder profile
     folder_members: 'GET', inviteFolder: 'POST', folderInvitedRemove: 'DELETE', addFolderMember: 'PUT', folderMembersRemove: 'DELETE', // folder members
+    process_video: 'POST',
   ]
 
   def springSecurityService
@@ -102,9 +106,31 @@ class DashboardFolderController extends ABaseFolderController {
     def org = request.getAttribute(ORG_KEY)
     def folder = request.getAttribute(FOLDER_KEY)
 
-    println "---------------ADD YOUR DO VIDEO CODE HERE---------------" + params
+    def listFolder = orgUserTeamService.listFolderVisible(org, user)
+    def listVideo = storageService.list(folder)?.collect { [name: (it.split('/videos/')[1]), url: it] }
 
-    redirect(uri: "/${folder.aliasId}/videos")
+    def fileName = params.fileName
+
+    render view: 'do_video', model:[org_path: 'folders', folder_path: 'videos', org: org, folder: folder, listFolder: listFolder, listVideo: listVideo, fileName: fileName]
+  }
+
+  def process_video() {
+    def user = request.getAttribute(USER_KEY)
+    def org = request.getAttribute(ORG_KEY)
+    def folder = request.getAttribute(FOLDER_KEY)
+
+    def fileName = params.fileName
+
+    def data
+    if(params.data) {
+      data = JSON.parse(params.data);
+    }
+
+    println '--------TO DO--------' + data
+
+    def ret = [status: CREATED.ordinal(), fileName: fileName, data: data]
+
+    render ret as JSON
   }
 
   def folder_profile() {

@@ -7,10 +7,10 @@ the following plugins:
 
 | BuildConfig | grails plugin | readme |
 |--------|-----|---------|
-|compile ':cookie-session:2.0.17'|http://grails.org/plugin/cookie-session|https://github.com/benlucchesi/grails-cookie-session-v2|
-|compile ':spring-security-core:2.0-RC4'|http://grails.org/plugin/spring-security-core|https://github.com/grails-plugins/grails-spring-security-core|
+|compile ':cookie-session:2.0.18'|http://grails.org/plugin/cookie-session|https://github.com/benlucchesi/grails-cookie-session-v2|
+|compile ':spring-security-core:2.0-RC5'|http://grails.org/plugin/spring-security-core|https://github.com/grails-plugins/grails-spring-security-core|
 |compile ':spring-security-userstore:0.8.3'|http://grails.org/plugin/spring-security-userstore|https://github.com/ikakara-team/grails-spring-security-userstore|
-|compile ':aws-instance:0.6.5'|http://grails.org/plugin/aws-instance|https://github.com/ikakara-team/grails-aws-instance|
+|compile ':aws-instance:0.6.7'|http://grails.org/plugin/aws-instance|https://github.com/ikakara-team/grails-aws-instance|
 |compile ':aws-orguserteam:0.9.7'|http://grails.org/plugin/aws-orguserteam|https://github.com/ikakara-team/grails-aws-orguserteam|
 
 Dependent SOA Services:

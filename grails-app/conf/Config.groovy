@@ -43,18 +43,20 @@ def host_name
 if(System.properties['PARAM1']) {
   def props_str = System.properties['PARAM1']
   if(props_str) {
-    def properties = props_str.split(',');
+    def properties = props_str.split(',')
     for(prop in properties) {
-      def key_val =  prop.split('=');
-      def key = key_val[0].trim();
-      def val = key_val[1].trim();
+      def key_val =  prop.split('=')
+      def key = key_val[0].trim()
+      def val = key_val[1].trim()
       switch(key) {
-      case 'host_name': host_name = val; // override the hostname
-        break;
+      case 'region': grails.plugin.awsinstance?.defaultRegion = val
+        break
+      case 'host_name': host_name = val // override the hostname
+        break
       case 's3bucket': grails.plugin.awsinstance?.s3.bucketName = val
-        break;
+        break
       case 'mailFrom': grails.plugin.awsinstance?.ses.mailFrom = val
-        break;
+        break
       }
     }
   }
@@ -212,6 +214,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 ]
 
 grails.plugin.springsecurity.secureChannel.definition = [
+  '/grails/**':           'ANY_CHANNEL',
   '**':                   'REQUIRES_SECURE_CHANNEL',
 ]
 

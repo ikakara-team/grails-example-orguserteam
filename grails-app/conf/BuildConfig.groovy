@@ -65,7 +65,7 @@ grails.project.dependency.resolution = {
 
   dependencies {
     // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-    compile 'com.amazonaws:aws-java-sdk:1.9.37' // http://aws.amazon.com/releasenotes/Java?browse=1
+    compile 'com.amazonaws:aws-java-sdk:1.9.40' // http://aws.amazon.com/releasenotes/Java?browse=1
 
     // needed for spring security
     compile "net.sf.ehcache:ehcache-core:2.6.11" //http://maven-repository.com/artifact/net.sf.ehcache/ehcache-core
@@ -76,16 +76,16 @@ grails.project.dependency.resolution = {
     build ":tomcat:8.0.22"
 
     // simplifies scaling spring-security
-    compile ':cookie-session:2.0.17' // http://grails.org/plugin/cookie-session
-    compile ':spring-security-core:2.0-RC4'
+    compile ':cookie-session:2.0.18' // http://grails.org/plugin/cookie-session
+    compile ':spring-security-core:2.0-RC5'
     compile ':spring-security-userstore:0.8.3'
 
-    compile ':aws-instance:0.6.5'
+    compile ':aws-instance:0.6.7'
     compile ':aws-orguserteam:0.9.7'
 
     compile ":scaffolding:2.1.2"
     compile ':cache:1.1.8'
-    compile ":asset-pipeline:2.2.0"
+    compile ":asset-pipeline:2.2.3"
     compile ":less-asset-pipeline:2.1.0"
 
     // https://github.com/groovydev/twitter-bootstrap-grails-plugin/blob/master/README.md

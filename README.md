@@ -9,9 +9,9 @@ the following plugins:
 |--------|-----|---------|
 |compile ':cookie-session:2.0.18'|http://grails.org/plugin/cookie-session|https://github.com/benlucchesi/grails-cookie-session-v2|
 |compile ':spring-security-core:2.0-RC5'|http://grails.org/plugin/spring-security-core|https://github.com/grails-plugins/grails-spring-security-core|
-|compile ':spring-security-userstore:0.8.3'|http://grails.org/plugin/spring-security-userstore|https://github.com/ikakara-team/grails-spring-security-userstore|
-|compile ':aws-instance:0.6.7'|http://grails.org/plugin/aws-instance|https://github.com/ikakara-team/grails-aws-instance|
-|compile ':aws-orguserteam:0.9.7'|http://grails.org/plugin/aws-orguserteam|https://github.com/ikakara-team/grails-aws-orguserteam|
+|compile ':spring-security-userstore:0.8.5'|http://grails.org/plugin/spring-security-userstore|https://github.com/ikakara-team/grails-spring-security-userstore|
+|compile ':aws-instance:0.7.0'|http://grails.org/plugin/aws-instance|https://github.com/ikakara-team/grails-aws-instance|
+|compile ':aws-orguserteam:0.9.8'|http://grails.org/plugin/aws-orguserteam|https://github.com/ikakara-team/grails-aws-orguserteam|
 
 Dependent SOA Services:
 --------------
@@ -76,7 +76,7 @@ Special Thanks:
 
 Copyright & License:
 --------------
-Copyright 2014-2015 Allen Arakaki.  All Rights Reserved.
+Copyright 2014-2015 the original author or authors.
 
 ```
 Apache 2 License - http://www.apache.org/licenses/LICENSE-2.0
@@ -85,5 +85,6 @@ Apache 2 License - http://www.apache.org/licenses/LICENSE-2.0
 History:
 --------------
 ```
-1.0 - init checkin
+0.1.1 - update copyright
+0.1.0 - init checkin
 ```

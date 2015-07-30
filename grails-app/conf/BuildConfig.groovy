@@ -46,7 +46,7 @@ grails.project.dependency.resolution = {
   management {
     // Remove this block when using a version of Grails (4.5) that uses a version of a Spring > 4.1.1
     // https://github.com/spring-projects/spring-framework/releases - update when 4.1.2
-    String springVersion = '4.1.6.RELEASE' // 4.1 and 4.1.1 has bug - https://jira.spring.io/browse/SPR-12400
+    String springVersion = '4.1.7.RELEASE' // 4.1 and 4.1.1 has bug - https://jira.spring.io/browse/SPR-12400
     dependency "org.springframework:spring-jdbc:${springVersion}"
     dependency "org.springframework:spring-context:${springVersion}"
     dependency "org.springframework:spring-aop:${springVersion}"
@@ -65,7 +65,7 @@ grails.project.dependency.resolution = {
 
   dependencies {
     // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-    compile 'com.amazonaws:aws-java-sdk:1.10.2' // http://aws.amazon.com/releasenotes/Java?browse=1
+    compile 'com.amazonaws:aws-java-sdk:1.10.7' // http://aws.amazon.com/releasenotes/Java?browse=1
 
     // needed for spring security
     compile "net.sf.ehcache:ehcache-core:2.6.11" //http://maven-repository.com/artifact/net.sf.ehcache/ehcache-core
@@ -85,7 +85,7 @@ grails.project.dependency.resolution = {
 
     compile ":scaffolding:2.1.2"
     compile ':cache:1.1.8'
-    compile ":asset-pipeline:2.3.8"
+    compile ":asset-pipeline:2.3.9"
     compile ":less-asset-pipeline:2.3.0"
 
     // https://github.com/groovydev/twitter-bootstrap-grails-plugin/blob/master/README.md
